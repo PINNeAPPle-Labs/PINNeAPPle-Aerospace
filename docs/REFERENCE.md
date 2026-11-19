@@ -15,7 +15,9 @@
 7. [Industry Standards & Certification](#7-industry-standards--certification)
 8. [Open Challenges & Gaps](#8-open-challenges--gaps)
 9. [Roadmap: Building the Reference Hub](#9-roadmap-building-the-reference-hub)
-10. [Sources](#sources)
+10. [Where this reference meets the PINNeAPPle codebase](#10-where-this-reference-meets-the-pinneapple-codebase)
+11. [Contributing](#11-contributing)
+12. [Sources](#sources)
 
 ---
 
@@ -226,6 +228,60 @@ A phased plan for growing this repository into the leading open reference for Ph
 
 ---
 
+---
+
+## 10. Where this reference meets the PINNeAPPle codebase
+
+*Added November 2026.* Everything above describes the field. This section is the other half: the places inside the PINNeAPPle organisation where each topic has something runnable, so a claim here can be checked against a case rather than taken on trust. Links are to live issues and finished experiments, not aspirations.
+
+### Use cases and open work in [`PINNeAPPle`](https://github.com/PINNeAPPle-Labs/PINNeAPPle)
+
+| Topic from this document | Where it lives |
+|---|---|
+| Section 2 — neural operators on geometry; Section 6 — Ahmed body data | [#241](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/241) Ahmed body: validate `pp.cfd.ExternalFlow` and train a surrogate on AhmedML |
+| Section 6 — AirfRANS as the reference aero dataset | [#242](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/242) reproduce the four AirfRANS tasks with MeshGraphNet |
+| Section 8 — open gap: a benchmark protocol others can rerun | [#1408](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/1408) benchmark problem P12, external aerodynamics, airfoil RANS (AirfRANS) |
+| Section 4 — panel and low-fidelity methods as a rung | [#492](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/492) NeuralFoil and AeroSandbox as the fast rung of the multi-fidelity ladder |
+| Section 4 — rotorcraft and turbomachinery baselines | [#270](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/270) small-UAV propeller performance against BEMT and rotating-frame OpenFOAM |
+| Section 4 — adjoint-driven shape optimisation | [#490](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/490) DAFoam bridge; [#296](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/296) MDO with surrogates and the airliner problem |
+| Section 5 — geometry parameterisation for design spaces | [#292](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/292) FFD, RBF morphing and shape modes on STL meshes |
+| Section 2 — the aircraft as a module, not a script | [#1122](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/1122) aerodynamics and aircraft: viscous airfoils, compressible flow, aeroelasticity, rotors, performance, sizing, handling qualities |
+| Section 8 — morphing and mission-adaptive design | [#1292](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/1292) AERIS, an aircraft whose geometry changes in flight; [#1299](https://github.com/PINNeAPPle-Labs/PINNeAPPle/issues/1299) optimiser-found rotor blades |
+
+### Finished experiments in [`PINNeAPPle-Benchmark`](https://github.com/PINNeAPPle-Labs/PINNeAPPle-Benchmark)
+
+Each of these ships its own runnable code and a technical paper generated from its own results.
+
+| Experiment | What it measures |
+|---|---|
+| [`08_supersonic_shock_train`](https://github.com/PINNeAPPle-Labs/PINNeAPPle-Benchmark/tree/main/experiments/08_supersonic_shock_train) | A supersonic shock train in a duct with a fixed-pressure outlet — the compressible regime Section 2 names as a PINN weakness. |
+| [`09_equal_budget_pinn_fno_deeponet`](https://github.com/PINNeAPPle-Labs/PINNeAPPle-Benchmark/tree/main/experiments/09_equal_budget_pinn_fno_deeponet) | When PINNs beat data-driven surrogates and when they do not, at equal budget, on Burgers, Darcy, Navier–Stokes and **the RANS airfoil** — directly relevant to the architecture comparison in Section 2. |
+| [`05_thermal_channel_twin`](https://github.com/PINNeAPPle-Labs/PINNeAPPle-Benchmark/tree/main/experiments/05_thermal_channel_twin) | Heated 2-D channel with a CFD reference, FNO/DeepONet/POD surrogates and EnKF — the conjugate-heat rung below a full thermal digital twin. |
+| [`10_multifidelity_capsule`](https://github.com/PINNeAPPle-Labs/PINNeAPPle-Benchmark/tree/main/experiments/10_multifidelity_capsule) | How many expensive runs a cheap model replaces, measured on a capsule aerothermodynamics corpus (1,024 modified-Newtonian cases, 64 with Eilmer Navier–Stokes at Mach 6–15). |
+
+### Related repositories
+
+- [`PINNeAPPle-CFD`](https://github.com/PINNeAPPle-Labs/PINNeAPPle-CFD) — the end-to-end CFD workflow this document assumes in Section 4: problem → equations → mesh → solver → dataset → model → verification.
+- [`PINNeAPPle`](https://github.com/PINNeAPPle-Labs/PINNeAPPle) — the library itself: PINNs, neural operators, solvers, geometry, validation.
+
+If a row here points at an issue that has since closed, the code is the source of truth; the issue is cited for the reasoning, not as a substitute for it.
+
+---
+
+## 11. Contributing
+
+This document is curated, and corrections are the most valuable contribution it receives.
+
+1. Open an issue or a pull request with the specific addition, correction or removal.
+2. **Cite a real, checkable source** — a paper, an official repo, a vendor page. Anything not verifiable is marked as such rather than stated as fact.
+3. Keep entries factual and neutral; no marketing language for commercial products, including PINNeAPPle's own.
+4. When adding a dataset, tool or solver, say what it is, who maintains it and where it lives.
+5. Flag what has gone stale — funding rounds, acquisitions and renamed products move quickly in this field.
+
+The full conventions are in [CONTRIBUTING.md](../CONTRIBUTING.md). If you are adding something that has a runnable counterpart in the PINNeAPPle organisation, add a row to Section 10 as well so the claim stays checkable.
+
+---
+
 ## Sources
 
 **Foundational papers**
@@ -281,4 +337,4 @@ A phased plan for growing this repository into the leading open reference for Ph
 
 ---
 
-*This document was compiled through web research in September 2026 and reflects the state of the field at that time. It should be treated as a living document — the roadmap in Section 9 explicitly assumes ongoing revision as the commercial and academic landscape evolves.*
+*This document was compiled through web research in September 2026 and reflects the state of the field at that time; Sections 10 and 11 were added in November 2026 to tie each topic to the runnable part of the PINNeAPPle organisation. It should be treated as a living document — the roadmap in Section 9 explicitly assumes ongoing revision as the commercial and academic landscape evolves.*
